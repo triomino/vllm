@@ -15,7 +15,8 @@ from huggingface_hub import (
 )
 from packaging.version import Version
 from transformers import GenerationConfig, PretrainedConfig
-from transformers.configuration_utils import ALLOWED_LAYER_TYPES
+from transformers.configuration_utils import ALLOWED_MLP_LAYER_TYPES
+ALLOWED_LAYER_TYPES=ALLOWED_MLP_LAYER_TYPES
 from transformers.models.auto.image_processing_auto import get_image_processor_config
 from transformers.models.auto.modeling_auto import (
     MODEL_FOR_CAUSAL_LM_MAPPING_NAMES,

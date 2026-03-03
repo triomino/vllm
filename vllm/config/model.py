@@ -11,8 +11,8 @@ import torch
 from pydantic import ConfigDict, Field, field_validator, model_validator
 from pydantic.dataclasses import dataclass
 from safetensors.torch import _TYPES as _SAFETENSORS_TO_TORCH_DTYPE
-from transformers.configuration_utils import ALLOWED_LAYER_TYPES
-
+from transformers.configuration_utils import ALLOWED_MLP_LAYER_TYPES
+ALLOWED_LAYER_TYPES=ALLOWED_MLP_LAYER_TYPES
 import vllm.envs as envs
 from vllm.attention.backends.registry import AttentionBackendEnum
 from vllm.config.multimodal import MMCacheType, MMEncoderTPMode, MultiModalConfig
@@ -1102,6 +1102,7 @@ class ModelConfig:
             "deepseek_v2",
             "deepseek_v3",
             "deepseek_v32",
+            "glm_moe_dsa",
             "deepseek_mtp",
             "kimi_k2",
             "kimi_linear",
