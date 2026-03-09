@@ -1527,6 +1527,11 @@ class DeepseekV2ForCausalLM(
             if "rotary_emb.inv_freq" in name:
                 continue
 
+            _id = "".join(re.findall(r'model\.layers\.(\d+)\.', name))
+            _id = int(_id) if _id != '' else 0
+            if _id >= self.config.num_hidden_layers:
+                continue
+
             spec_layer = get_spec_layer_idx_from_weight_name(self.config, name)
             if spec_layer is not None:
                 continue  # skip spec decode layers for main model
